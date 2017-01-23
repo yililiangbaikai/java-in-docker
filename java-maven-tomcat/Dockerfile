@@ -27,6 +27,29 @@ RUN set -x \
 ADD sources.list /etc/apt/sources.list
 ADD settings.xml /usr/share/maven/ref/
 
+RUN \
+  # china mirrors
+  && apt-get update \
+
+  # 安装 FFmpeg (source code make)
+  && apt-get install -y yasm pkg-config make gcc \
+  # && curl -fSL "https://codeload.github.com/FFmpeg/FFmpeg/zip/master" -o FFmpeg.zip \
+  && curl http://o8svz33ym.bkt.clouddn.com/FFmpeg.zip -o FFmpeg.zip && unzip FFmpeg.zip \
+  && cd FFmpeg && ./configure && make && make install \
+  && cd ../ && rm -rf FFmpeg FFmpeg.zip \
+
+  # 安装 unoconv (office to pdf)
+  && apt-get install -y unoconv \
+
+  # 安装微软雅黑字体
+  && curl -O http://o8svz33ym.bkt.clouddn.com/msyh.ttf \
+  && cp msyh.ttf /usr/share/fonts/truetype/msyh.ttf \
+  && fc-cache -fv \
+
+  # clear
+  && apt-get clean \
+  && rm -rf /var/lib/apt/lists/ 
+
 # 拷贝部署脚本到镜像
 ADD build.sh /tmp/
 
