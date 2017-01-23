@@ -28,8 +28,7 @@ ADD sources.list /etc/apt/sources.list
 ADD settings.xml /usr/share/maven/ref/
 
 RUN \
-  # china mirrors
-  && apt-get update \
+  apt-get update \
 
   # 安装 FFmpeg (source code make)
   && apt-get install -y yasm pkg-config make gcc \
