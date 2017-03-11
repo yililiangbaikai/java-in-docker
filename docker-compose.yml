@@ -4,7 +4,7 @@ java-maven-tomcat:
   # 构建本地镜像
   # build: ./java-maven-tomcat
   links:
-    - mysql
+    - ermp_mysql
   # 将容器的8080端口绑定到宿主机的80端口
   ports:
     - "8010:8080"
@@ -16,12 +16,12 @@ java-maven-tomcat:
     # 挂载 Tomcat 的 log 目录
     - ./log/tomcat:/usr/local/tomcat/logs
     # 挂载 JAVA 源代码目录
-    - ./code:/tmp/code
+    - ./code/ermp:/tmp/code
   restart: always
-mysql:
+ermp_mysql:
   build: ./mysql
   expose:
-    - "3310"
+    - "3306"
   # 将容器的3306端口绑定到宿主机的3360端口
   ports:
     - "3310:3306"
