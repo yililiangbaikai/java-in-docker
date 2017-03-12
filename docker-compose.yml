@@ -17,6 +17,10 @@ java-maven-tomcat:
     - ./log/tomcat:/usr/local/tomcat/logs
     # 挂载 JAVA 源代码目录
     - ./code/ermp:/tmp/code
+    # 挂载 前端页面路径
+    - /app/ermp/ermp-web-new:/app/ermp/ermp-web-new
+    # 挂载 nas
+    - /nas:/nas
   restart: always
 ermp_mysql:
   build: ./mysql
