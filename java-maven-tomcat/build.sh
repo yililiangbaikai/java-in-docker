@@ -15,4 +15,4 @@ mv target/*.war $CATALINA_HOME/webapps/ROOT.war
 cd / && rm -rf /tmp/build
 
 # 启动tomcat
-bash $CATALINA_HOME/bin/catalina.sh run
+sh $CATALINA_HOME/bin/catalina.sh run

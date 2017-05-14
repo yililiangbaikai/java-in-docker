@@ -1,13 +1,13 @@
-java-maven-tomcat:
+java-maven-tomcat-ffmpeg:
   # 免构建镜像，未修改构建文件下等同于构建本地镜像，如使用本地 build 需注释此行并关闭 build 注释。
-  image: daocloud.io/yililiangbaikai/java-maven-ffmpeg-unoconv
+  #image: daocloud.io/yililiangbaikai/java-maven-ffmpeg-unoconv
   # 构建本地镜像
-  # build: ./java-maven-tomcat
+  build: ./java-maven-tomcat
   links:
-    - ermp_mysql
+    - ermp_mysql_ffmpeg
   # 将容器的8080端口绑定到宿主机的80端口
   ports:
-    - "8010:8080"
+    - "8011:8080"
   # java-maven-tomcat 容器启动后的运行命令
   command: "bash /tmp/build.sh"
   volumes:
@@ -22,13 +22,13 @@ java-maven-tomcat:
     # 挂载 nas
     - /nas:/nas
   restart: always
-ermp_mysql:
+ermp_mysql_ffmpeg:
   build: ./mysql
   expose:
     - "3306"
   # 将容器的3306端口绑定到宿主机的3360端口
   ports:
-    - "3310:3306"
+    - "3311:3306"
   environment:
     MYSQL_DATABASE: ermp
     MYSQL_ROOT_PASSWORD: root
