@@ -1,6 +1,7 @@
 java-maven-tomcat:
   # 免构建镜像，未修改构建文件下等同于构建本地镜像，如使用本地 build 需注释此行并关闭 build 注释。
   image: daocloud.io/yililiangbaikai/java-maven-ffmpeg-unoconv
+  mem_limit: 2048m
   # 构建本地镜像
   # build: ./java-maven-tomcat
   links:
@@ -24,6 +25,7 @@ java-maven-tomcat:
   restart: always
 ermp_mysql:
   build: ./mysql
+  mem_limit: 1024m
   expose:
     - "3306"
   # 将容器的3306端口绑定到宿主机的3360端口
