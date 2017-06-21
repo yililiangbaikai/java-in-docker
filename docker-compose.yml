@@ -33,7 +33,7 @@ ermp_mysql:
     - "3310:3306"
   environment:
     MYSQL_DATABASE: ermp
-    MYSQL_ROOT_PASSWORD: root
+    MYSQL_ROOT_PASSWORD: bingo_ermp
   volumes:
   # 挂载 Mysql 数据目录，持久化数据库。
     - ./data/mysql:/var/lib/mysql
